@@ -1,0 +1,9 @@
+<div class ="container">
+    <ul class="list-group" th:fragment="event_search_context">
+        <li class="list-group-item" th:each="event : ${foundedEvents}">
+            <a th:text="${event.title}" th:href="@{/eventinfo(eventId=${event.id})}">
+
+            </a>
+        </li>
+    </ul>
+</div>

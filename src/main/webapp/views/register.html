@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="views/fragments/head_block :: head_block">
+    <title id="pageTitle">Registration</title>
+</head>
+<body>
+<div th:replace="views/fragments/main_header :: main_header"></div>
+
+<div class="container addmarg">
+    <h2>Register</h2>
+    <form action="#" th:action="@{/register}" th:object="${newUser}" method="post">
+
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" th:field="*{email}"/>
+            <p class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</p>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username" th:field="*{name}"/>
+            <p class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" th:field="*{password}"/>
+        </div>
+        <div class="form-group">
+            <label for="money_account">Money account:</label>
+            <input type="text" class="form-control" id="money_account" placeholder="Enter money account"
+                   th:field="*{moneyAccount}"/>
+        </div>
+        <div class="form-group">
+            <label for="conf_pwd">Confirm password:</label>
+            <input type="password" class="form-control" id="conf_pwd" placeholder="Confirm password" th:field="*{confirmPassword}"/>
+            <p class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Error</p>
+        </div>
+
+        <div class="form-group">
+            <label for="city">Your city:</label>
+            <select id="city" th:field="*{city}">
+                <option th:each="current_city : ${cities}" th:value="${current_city.id}"
+                        th:text="${current_city.title}">
+                    Value
+                </option>
+            </select>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+
+<script th:src="@{../js/components/confirm_password_validate.js}"></script>
+</body>
+</html>

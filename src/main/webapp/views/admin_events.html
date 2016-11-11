@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div th:replace="views/fragments/head_block :: head_block"></div>
+    <title>Events</title>
+
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js}"></script>
+        <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.min.js}"></script>
+    <script th:src="@{../js/app.js}"></script>
+    <script th:src="@{../js/services/event.service.js}"></script>
+    <script th:src="@{../js/services/eventtype.service.js}"></script>
+    <script th:src="@{../js/services/city.service.js}"></script>
+    <script th:src="@{../js/services/place.service.js}"></script>
+    <script th:src="@{../js/admin/event.admin.controller.js}"></script>
+
+</head>
+<body ng-app="ticketApp">
+<div ng-controller="EventAdminController">
+    <div th:replace="views/fragments/main_header :: main_header"></div>
+    <div th:replace="views/fragments/admin_events_context :: admin_events_context"></div>
+</div>
+
+
+</body>
+</html>

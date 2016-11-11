@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="views/fragments/head_block :: head_block">
+    <title id="pageTitle">Deal</title>
+</head>
+<body>
+<div th:replace="views/fragments/main_header :: main_header"></div>
+
+<div class="alert alert-danger" role="alert" th:text="${errorMessage}" th:if="${errorMessage != null}">
+</div>
+
+<div class="container" th:if="${deal != null}">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h2>Deal id</h2>
+            <div th:text="${deal.id}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>Buyer</h2>
+            <div th:text="${deal.buyer.name}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>Ticket price</h2>
+            <div th:text="${deal.ticket.cost}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>Event</h2>
+            <div th:text="${deal.ticket.event.title}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>Ticket description</h2>
+            <div th:text="${deal.ticket.event.description}"></div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

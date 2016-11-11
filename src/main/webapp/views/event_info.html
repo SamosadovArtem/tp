@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="views/fragments/head_block :: head_block">
+    <title th:text="#{event.title}" id="pageTitle">Info</title>
+
+    <!--<link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.css"
+          th:href="@{http://bootswatch.com/slate/bootstrap.css}"/>
+    <link rel="stylesheet" href="../../css/style.css" th:href="@{../../css/style.css}"/>
+    <script th:src="@{https://code.jquery.com/jquery-3.1.0.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <meta charset="UTF-8"/>->
+
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.min.js}"></script>
+    <script th:src="@{../js/app.js}"></script>
+    <script th:src="@{../js/services/comment.service.js}"></script>
+    <script th:src="@{../js/components/comment.controller.js}"></script>-->
+</head>
+<body ng-app="ticketApp">
+
+<div th:replace="views/fragments/main_header :: main_header"></div>
+<div th:replace="views/fragments/event_info_context :: event_info_context"></div>
+
+<script th:src="@{../js/components/number_validate.js}"></script>
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.min.js}"></script>
+<script th:src="@{../js/app.js}"></script>
+<script th:src="@{../js/services/comment.service.js}"></script>
+<script th:src="@{../js/components/comment.controller.js}"></script>
+</body>
+</html>

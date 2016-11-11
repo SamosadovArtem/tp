@@ -1,0 +1,51 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">EventName</h4>
+    </div>
+    <form>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" placeholder="Title" ng-model="currentEvent.title">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type=textarea rows=5 class="form-control" placeholder="Description"
+                       ng-model="currentEvent.description">
+            </div>
+
+            <div class="form-group">
+                <label>EventType</label>
+                <select class="form-control" ng-options="x as x.type for x in allEventTypes"
+                        ng-model="currentEvent.eventType">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <select class="form-control" ng-init="currentCity = cities[0]" ng-model="currentCity"
+                        ng-options="x.id as x.title for x in cities">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Place</label>
+                <select class="form-control" ng-model="currentEvent.place"
+                        ng-options="x.id as x.title for x in places | filter:{'city':  currentCity}:true">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Is confirmed</label>
+                <label>
+                    <input type="checkbox" id="blankCheckbox" ng-checked="currentEvent.confirmed"
+                           ng-model="currentEvent.confirmed">
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" ng-click="putEventToDataBase()">Сохранить изменения</button>
+        </div>
+
+    </form>
+</div>

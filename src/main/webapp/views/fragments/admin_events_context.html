@@ -1,0 +1,42 @@
+<div th:fragment="admin_events_context" class="addmarg">
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ttile</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>isConfirmed</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="event in events">
+            <tr>
+                <td>{{event.id}}</td>
+                <td><a ng-href="/eventinfo?eventId={{event.id}}" target="_self">{{event.title}}</a></td>
+                <td>{{event.description}}</td>
+                <td>{{event.eventType.type}}</td>
+                <td><input type="checkbox" ng-checked="event.confirmed" /></td>
+                <td><a data-toggle="modal" data-target="#myModal" ng-click="getDublicateEvent(event)">Edit</a></td>
+                <td><a ng-click="deleteEvent(event)">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Button trigger modal -->
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="getEmptyEvent()">
+            Add Event
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div th:replace="views/fragments/admin_event_modal :: admin_event_modal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

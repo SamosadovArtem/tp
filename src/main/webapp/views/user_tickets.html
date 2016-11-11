@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="views/fragments/head_block :: head_block">
+    <title id="pageTitle">Your tickets</title>
+</head>
+<body>
+<div th:replace="views/fragments/main_header :: main_header"></div>
+
+<h2>Tickets, u want 2 sell</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Event</th>
+        <th>Details</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.event.title}"><a href="#" th:href="@{/eventinfo(eventId=${ticket.event.id})}">John</a>
+        </td>
+        <td th:text="${ticket.details}">Doe</td>
+        <td th:text="${ticket.cost}">Doe</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

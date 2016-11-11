@@ -1,0 +1,7 @@
+<ul class="list-group" th:fragment="events_with_selected_type_context">
+    <li class="list-group-item" th:each="event : ${selectedEvents}">
+        <a th:text="${event.title}" th:href="@{/eventinfo(eventId=${event.id})}">
+
+        </a>
+    </li>
+</ul>

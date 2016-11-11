@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="views/fragments/head_block :: head_block">
+    <title id="pageTitle">User page</title>
+</head>
+<body>
+<div th:replace="views/fragments/main_header :: main_header"></div>
+
+<h2>Hello,
+    <div th:text="${user.name}">username</div>
+</h2>
+<h3>Your money balance =
+    <div th:text="${user.balance}">balance</div>
+</h3>
+
+<div class="container">
+
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <a href="#" th:href="@{/user_ticket}">My tickets to sell</a>
+        </li>
+
+        <li>
+            <a href="#" th:href="@{/user_deals_sell}">My deals to sell</a>
+        </li>
+
+        <li>
+            <a href="#" th:href="@{/user_deals_buy}">My deals to buy</a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

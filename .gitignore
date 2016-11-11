@@ -1,0 +1,13 @@
+.idea/
+Diplom.iml
+META-INF/
+target/
+.mvn/
+mvnw
+mvnw.cmd
+ticket_project.iml
+.settings/
+.project
+.classpath
+ticket.iml
+_Template/

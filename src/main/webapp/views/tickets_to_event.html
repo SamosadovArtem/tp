@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="views/fragments/head_block :: head_block">
+    <title id="pageTitle">Tickets to event</title>
+</head>
+<body>
+
+<div th:replace="views/fragments/main_header :: main_header"></div>
+
+<div th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Price</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.cost}">Price</td>
+        <td th:text="${ticket.details}">Price</td>
+        <td>
+            <form th:action="@{/buyticket}" method="post">
+                <input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>
+                <input type="hidden" th:value="${param.eventId[0]}" th:name="eventId"/>
+                <button type="submit" class="btn btn-default">Buy</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

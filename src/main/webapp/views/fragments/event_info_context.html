@@ -1,0 +1,118 @@
+<div th:fragment="event_info_context" ng-controller="CommentController" class="">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h2>Event id</h2>
+            <div th:text="${event.id}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>title</h2>
+            <div th:text="${event.title}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>Is event confirmed</h2>
+            <div th:text="${event.confirmed}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>Description</h2>
+            <div th:text="${event.description}"></div>
+        </li>
+
+        <li class="list-group-item">
+            <h2>type</h2>
+            <div th:text="${event.eventType.type}"></div>
+        </li>
+    </ul>
+    <!--<form method="post" th:object="${event}" th:action="@{/sellticket}">-->
+    <button data-toggle="modal" data-target="#myModal" class="btn btn-default">Sell ticket</button>
+
+    <a class="btn btn-default" th:href="@{/ticketsforevent(eventId=${event.id})}">Buy ticket</a>
+
+    <br/>
+
+    <!--New Comment-->
+    <div class="container" sec:authorize="isAuthenticated()">
+        <form id="commentMessage">
+            <div class="form-group">
+                <label for="commentField">Comment:</label>
+                <textarea class="form-control" rows="5" id="commentField"></textarea>
+            </div>
+            <button class="btn btn-default" id="addCommentButton" th:attr="ng-click='addComment(\''+${username}+'\');'" >Comment</button>
+        </form>
+    </div>
+
+    <!--Comments-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-header">
+                    <h1>
+                        <small class="pull-right" ng-model="commentsCount"></small><!--th:text="${comments.size()}"-->
+                        Comments
+                    </h1>
+                </div>
+                <div class="comments-list">
+                    <div class="media" ng-repeat="comment in comments">
+                        <p class="pull-right">
+                            <small>{{comment.commentDate}}</small>
+                        </p>
+                        <a class="media-left" href="#">
+                            <!--<img src="http://lorempixel.com/40/40/people/1/"/>-->
+                        </a>
+                        <div class="media-body">
+
+                            <h4 class="media-heading user_name">{{comment.username}}</h4>
+                            <div>{{comment.text}}</div>
+
+                            <p>
+                                <!--<small><a href="">Like</a> - <a href="">Share</a></small>-->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">EventName</h4>
+                </div>
+                <form th:action="@{/sellticket}" method="post">
+                    <input type="hidden" th:value="${event.id}" name="eventId"/>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input id="priceInput" th:value="${price}" name="price" type="textarea" rows="5"
+                                   class="form-control"
+                                   placeholder="Price"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Details</label>
+                            <input th:value="${details}" name="details" type="textarea" rows="5"
+                                   class="form-control"
+                                   placeholder="Details"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
